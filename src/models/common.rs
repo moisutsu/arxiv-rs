@@ -7,12 +7,12 @@ pub struct Arxiv {
 
 #[derive(Debug, Clone)]
 pub struct ArxivQuery {
-    base_url: String,
-    search_query: String,
+    pub base_url: String,
+    pub search_query: String,
 }
 
 #[derive(Debug, Clone)]
 pub struct ArxivQueryBuilder {
-    base_url: String,
-    search_query: String,
+    pub base_url: String,
+    pub search_query: String,
 }
