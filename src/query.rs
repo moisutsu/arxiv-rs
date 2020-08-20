@@ -13,10 +13,10 @@ impl ArxivQueryBuilder {
             search_query: self.search_query.clone(),
         }
     }
-    pub fn search_query(&mut self, search_query: String) -> Self {
+    pub fn search_query(&mut self, search_query: &str) -> Self {
         ArxivQueryBuilder {
             base_url: self.base_url.clone(),
-            search_query: search_query,
+            search_query: search_query.to_string(),
         }
     }
 }

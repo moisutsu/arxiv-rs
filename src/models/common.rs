@@ -1,8 +1,8 @@
 #[derive(Debug, Clone)]
 pub struct Arxiv {
-    id: String,
-    title: String,
-    summary: String,
+    pub id: String,
+    pub title: String,
+    pub summary: String,
 }
 
 #[derive(Debug, Clone)]
