@@ -21,8 +21,8 @@ impl ArxivQueryBuilder {
     }
 }
 
-impl ArxivQuery {
-    pub fn to_string(&self) -> String {
+impl std::string::ToString for ArxivQuery {
+    fn to_string(&self) -> String {
         format!("{}search_query={}", self.base_url, self.search_query)
     }
 }
