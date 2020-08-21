@@ -17,7 +17,11 @@ impl Arxiv {
             .await
             .map_err(|err| anyhow!(err))?;
         let body = response.body_string().await.map_err(|err| anyhow!(err))?;
+        let arxivs = Arxiv::parse_data(body)?;
+        Ok(arxivs)
+    }
 
+    fn parse_data(body: String) -> Result<Vec<Arxiv>> {
         let mut parser = EventReader::from_str(&body);
         let mut arxiv = Arxiv::new();
         let mut arxivs = Vec::new();
