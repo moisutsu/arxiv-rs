@@ -10,8 +10,8 @@ async fn main() -> Result<()> {
         .max_results(5)
         .build();
     let arxivs = Arxiv::fetch_data(query).await?;
-    for i in 0..arxivs.len() {
-        println!("{:?}", arxivs[i]);
+    for arxiv in arxivs {
+        println!("{:?}", arxiv);
     }
     Ok(())
 }
