@@ -1,8 +1,11 @@
 #[derive(Debug, Clone)]
 pub struct Arxiv {
     pub id: String,
+    pub updated: String,
+    pub published: String,
     pub title: String,
     pub summary: String,
+    pub authors: Vec<String>,
 }
 
 #[derive(Debug, Clone)]
