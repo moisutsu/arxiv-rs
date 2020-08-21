@@ -22,7 +22,7 @@ impl ArxivQueryBuilder {
 }
 
 impl ArxivQuery {
-    pub fn query(&self) -> String {
+    pub fn to_string(&self) -> String {
         format!("{}search_query={}", self.base_url, self.search_query)
     }
 }
