@@ -12,6 +12,7 @@ async fn main() -> Result<()> {
     let arxivs = Arxiv::fetch_data(query).await?;
     for arxiv in arxivs {
         println!("{:?}", arxiv);
+        arxiv.fetch_pdf(&format!("pdf/{}", arxiv.title)).await?;
     }
     Ok(())
 }
