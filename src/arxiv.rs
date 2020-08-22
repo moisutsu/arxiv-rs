@@ -12,6 +12,7 @@ impl Arxiv {
             title: "".to_string(),
             summary: "".to_string(),
             authors: Vec::new(),
+            pdf_url: "".to_string(),
         }
     }
 
@@ -31,7 +32,7 @@ impl Arxiv {
 
         'outer: loop {
             match parser.next()? {
-                XmlEvent::StartElement { name, .. } => match &name.local_name[..] {
+                XmlEvent::StartElement { name, attributes, .. } => match &name.local_name[..] {
                     "entry" => {
                         arxiv = Arxiv::new();
                     }
@@ -75,6 +76,11 @@ impl Arxiv {
                         parser.next()?;
                         if let XmlEvent::Characters(author) = parser.next()? {
                             arxiv.authors.push(author);
+                        }
+                    }
+                    "link" => {
+                        if attributes[0].value == "pdf" {
+                            arxiv.pdf_url = attributes[1].value.clone();
                         }
                     }
                     _ => (),

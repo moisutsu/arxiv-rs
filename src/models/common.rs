@@ -6,6 +6,7 @@ pub struct Arxiv {
     pub title: String,
     pub summary: String,
     pub authors: Vec<String>,
+    pub pdf_url: String,
 }
 
 #[derive(Debug, Clone)]
