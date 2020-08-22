@@ -9,7 +9,7 @@ async fn main() -> Result<()> {
         .start(0)
         .max_results(5)
         .build();
-    let arxivs = Arxiv::fetch_data(query).await?;
+    let arxivs = Arxiv::fetch_arxivs(query).await?;
     for arxiv in arxivs {
         println!("{:?}", arxiv);
         arxiv.fetch_pdf(&format!("pdf/{}", arxiv.title)).await?;

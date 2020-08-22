@@ -19,7 +19,7 @@ impl Arxiv {
         }
     }
 
-    pub async fn fetch_data(query: ArxivQuery) -> Result<Vec<Arxiv>> {
+    pub async fn fetch_arxivs(query: ArxivQuery) -> Result<Vec<Arxiv>> {
         let mut response = surf::get(query.to_string())
             .await
             .map_err(|err| anyhow!(err))?;
