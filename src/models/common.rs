@@ -16,6 +16,8 @@ pub struct ArxivQuery {
     pub id_list: String,
     pub start: Option<i32>,
     pub max_results: Option<i32>,
+    pub sort_by: String,
+    pub sort_order: String,
 }
 
 #[derive(Debug, Clone)]
@@ -25,4 +27,6 @@ pub struct ArxivQueryBuilder {
     pub id_list: String,
     pub start: Option<i32>,
     pub max_results: Option<i32>,
+    pub sort_by: String,
+    pub sort_order: String,
 }

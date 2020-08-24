@@ -8,6 +8,8 @@ impl ArxivQueryBuilder {
             id_list: "".to_string(),
             start: None,
             max_results: None,
+            sort_by: "".to_string(),
+            sort_order: "".to_string(),
         }
     }
     pub fn build(&self) -> ArxivQuery {
@@ -17,6 +19,8 @@ impl ArxivQueryBuilder {
             id_list: self.id_list.clone(),
             start: self.start,
             max_results: self.max_results,
+            sort_by: self.sort_by.clone(),
+            sort_order: self.sort_order.clone(),
         }
     }
     pub fn search_query(&self, search_query: &str) -> Self {
@@ -43,6 +47,18 @@ impl ArxivQueryBuilder {
             ..self.clone()
         }
     }
+    pub fn sort_by(&self, sort_by: &str) -> Self {
+        ArxivQueryBuilder {
+            sort_by: sort_by.to_string(),
+            ..self.clone()
+        }
+    }
+    pub fn sort_order(&self, sort_order: &str) -> Self {
+        ArxivQueryBuilder {
+            sort_order: sort_order.to_string(),
+            ..self.clone()
+        }
+    }
 }
 
 impl std::string::ToString for ArxivQuery {
@@ -59,6 +75,12 @@ impl std::string::ToString for ArxivQuery {
         }
         if let Some(max_results) = self.max_results {
             querys.push(format!("max_results={}", max_results));
+        }
+        if &self.sort_by != "" {
+            querys.push(format!("sortBy={}", self.sort_by));
+        }
+        if &self.sort_order != "" {
+            querys.push(format!("sortOrder={}", self.sort_order));
         }
         format!("{}{}", self.base_url, querys.join("&"))
     }
