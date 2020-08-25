@@ -1,6 +1,5 @@
-use arxiv::{Arxiv, ArxivQueryBuilder};
-
 use anyhow::Result;
+use arxiv::{Arxiv, ArxivQueryBuilder};
 
 #[async_std::main]
 async fn main() -> Result<()> {
@@ -14,7 +13,6 @@ async fn main() -> Result<()> {
     let arxivs = Arxiv::fetch_arxivs(query).await?;
     for arxiv in arxivs {
         println!("{:?}", arxiv);
-        arxiv.fetch_pdf(&format!("pdf/{}", arxiv.title)).await?;
     }
     Ok(())
 }
