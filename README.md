@@ -3,6 +3,8 @@
 [![Crates.io](https://img.shields.io/crates/v/arxiv-rs.svg)](https://crates.io/crates/arxiv-rs)
 ![License](https://img.shields.io/crates/l/arxiv-rs.svg)
 
+This is a wrapper crate for the arXiv API.
+
 ## Show your support
 
 Give a ⭐️ if this project helped you!
