@@ -1,5 +1,5 @@
 use anyhow::Result;
-use arxiv::{Arxiv, ArxivQueryBuilder};
+use arxiv::ArxivQueryBuilder;
 
 #[async_std::main]
 async fn main() -> Result<()> {
@@ -10,7 +10,7 @@ async fn main() -> Result<()> {
         .sort_by("submittedDate")
         .sort_order("descending")
         .build();
-    let arxivs = Arxiv::fetch_arxivs(query).await?;
+    let arxivs = arxiv::fetch_arxivs(query).await?;
     for arxiv in arxivs {
         println!("{:?}", arxiv);
     }
