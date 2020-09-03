@@ -11,7 +11,7 @@ Add dependencies to `Cargo.toml`
 
 ```toml
 [dependencies]
-arxiv-rs = "0.1.0"
+arxiv-rs = "0.1.1"
 async-std = { version = "1.6.0", features = ["attributes"] }
 anyhow = "1.0.32"
 ```
