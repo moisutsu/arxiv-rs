@@ -4,28 +4,29 @@ macro_rules! query {
         {
             let temp_query = $crate::ArxivQueryBuilder::new();
             $(
-                $crate::query_inner!($i, $e, temp_query);
+                $crate::query!(@inner, $i, $e, temp_query);
             )*
             temp_query.build()
         }
-    }
-}
+    };
 
-#[macro_export]
-macro_rules! query_inner {
-    (search_query, $e:expr, $temp_query: ident) => {
+    (@inner, search_query, $e:expr, $temp_query:ident) => {
         let $temp_query = $temp_query.search_query($e);
     };
-    (start, $e:expr, $temp_query: ident) => {
+
+    (@inner, start, $e:expr, $temp_query:ident) => {
         let $temp_query = $temp_query.start($e);
     };
-    (max_results, $e:expr, $temp_query: ident) => {
+
+    (@inner, max_results, $e:expr, $temp_query:ident) => {
         let $temp_query = $temp_query.max_results($e);
     };
-    (sort_by, $e:expr, $temp_query: ident) => {
+
+    (@inner, sort_by, $e:expr, $temp_query:ident) => {
         let $temp_query = $temp_query.sort_by($e);
     };
-    (sort_order, $e:expr, $temp_query: ident) => {
+
+    (@inner, sort_order, $e:expr, $temp_query:ident) => {
         let $temp_query = $temp_query.sort_order($e);
     };
 }
