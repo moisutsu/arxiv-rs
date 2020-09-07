@@ -28,6 +28,10 @@ macro_rules! query {
         let $temp_query = $temp_query.search_query($e);
     };
 
+    (@inner, id_list, $e:expr, $temp_query:ident) => {
+        let $temp_query = $temp_query.id_list($e);
+    };
+
     (@inner, start, $e:expr, $temp_query:ident) => {
         let $temp_query = $temp_query.start($e);
     };
