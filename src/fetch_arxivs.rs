@@ -3,6 +3,15 @@ use crate::{Arxiv, ArxivQuery};
 use anyhow::{anyhow, Result};
 use xml::reader::{EventReader, XmlEvent};
 
+/// Fetch the paper information using the arXiv API.
+/// # Example
+/// ```rust
+/// use arxiv::{fetch_arxivs, query};
+///
+/// let query = query!(search_query = "cat:cs.CL");
+/// // arxivs type is Vec<Arxiv>
+/// let arxivs = fetch_arxivs(query).await?;
+/// ```
 pub async fn fetch_arxivs(query: ArxivQuery) -> Result<Vec<Arxiv>> {
     let mut response = surf::get(query.to_string())
         .await

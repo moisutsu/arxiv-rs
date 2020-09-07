@@ -1,3 +1,4 @@
+/// A structure that stores the paper information.
 #[derive(Debug, Clone)]
 pub struct Arxiv {
     pub id: String,
@@ -9,6 +10,7 @@ pub struct Arxiv {
     pub pdf_url: String,
 }
 
+/// A structure that stores the query information.
 #[derive(Debug, Clone)]
 pub struct ArxivQuery {
     pub base_url: String,
@@ -20,6 +22,7 @@ pub struct ArxivQuery {
     pub sort_order: String,
 }
 
+/// A builder of ArxivQuery
 #[derive(Debug, Clone)]
 pub struct ArxivQueryBuilder {
     pub base_url: String,

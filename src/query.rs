@@ -12,6 +12,7 @@ impl ArxivQueryBuilder {
             sort_order: "".to_string(),
         }
     }
+    /// Build ArxivQuery from ArxivQueryBuilder.
     pub fn build(&self) -> ArxivQuery {
         ArxivQuery {
             base_url: self.base_url.clone(),
@@ -23,36 +24,42 @@ impl ArxivQueryBuilder {
             sort_order: self.sort_order.clone(),
         }
     }
+    /// Store the argument value in search_query.
     pub fn search_query(&self, search_query: &str) -> Self {
         ArxivQueryBuilder {
             search_query: search_query.to_string(),
             ..self.clone()
         }
     }
+    /// Store the argument value in id_list.
     pub fn id_list(&self, id_list: &str) -> Self {
         ArxivQueryBuilder {
             id_list: id_list.to_string(),
             ..self.clone()
         }
     }
+    /// Store the argument value in start.
     pub fn start(&self, start: i32) -> Self {
         ArxivQueryBuilder {
             start: Some(start),
             ..self.clone()
         }
     }
+    /// Store the argument value in max_results.
     pub fn max_results(&self, max_results: i32) -> Self {
         ArxivQueryBuilder {
             max_results: Some(max_results),
             ..self.clone()
         }
     }
+    /// Store the argument value in sort_by.
     pub fn sort_by(&self, sort_by: &str) -> Self {
         ArxivQueryBuilder {
             sort_by: sort_by.to_string(),
             ..self.clone()
         }
     }
+    /// Store the argument value in sort_order.
     pub fn sort_order(&self, sort_order: &str) -> Self {
         ArxivQueryBuilder {
             sort_order: sort_order.to_string(),
@@ -62,6 +69,7 @@ impl ArxivQueryBuilder {
 }
 
 impl std::string::ToString for ArxivQuery {
+    /// Converts ArxivQuery to a URL string.
     fn to_string(&self) -> String {
         let mut querys = Vec::new();
         if &self.search_query != "" {

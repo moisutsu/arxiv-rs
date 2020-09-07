@@ -1,3 +1,5 @@
+//! This crate is a wrapper of the arXiv API.
+
 mod arxiv;
 mod fetch_arxivs;
 mod macros;

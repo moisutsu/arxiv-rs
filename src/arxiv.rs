@@ -18,6 +18,7 @@ impl Arxiv {
         }
     }
 
+    /// Save the paper as a pdf from the information stored by the structure.
     pub async fn fetch_pdf(&self, out_path: &str) -> Result<()> {
         let mut response = surf::get(&self.pdf_url).await.map_err(|err| anyhow!(err))?;
         let body = response.body_bytes().await.map_err(|err| anyhow!(err))?;
