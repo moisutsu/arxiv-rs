@@ -13,7 +13,7 @@ use xml::reader::{EventReader, XmlEvent};
 /// let arxivs = fetch_arxivs(query).await?;
 /// ```
 pub async fn fetch_arxivs(query: ArxivQuery) -> Result<Vec<Arxiv>> {
-    let mut response = surf::get(query.to_string())
+    let mut response = surf::get(query.to_url())
         .await
         .map_err(|err| anyhow!(err))?;
     let body = response.body_string().await.map_err(|err| anyhow!(err))?;

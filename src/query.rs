@@ -68,9 +68,9 @@ impl ArxivQueryBuilder {
     }
 }
 
-impl std::string::ToString for ArxivQuery {
-    /// Converts ArxivQuery to a URL string.
-    fn to_string(&self) -> String {
+impl ArxivQuery {
+    /// Generate a URL string.
+    pub fn to_url(&self) -> String {
         let mut querys = Vec::new();
         if &self.search_query != "" {
             querys.push(format!("search_query={}", self.search_query));
