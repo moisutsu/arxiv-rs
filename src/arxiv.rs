@@ -1,6 +1,6 @@
 use crate::Arxiv;
 
-use anyhow::{anyhow, Result};
+use anyhow::Result;
 
 use std::fs;
 use std::io::Write;
@@ -20,8 +20,7 @@ impl Arxiv {
 
     /// Save the paper as a pdf from the information stored by the structure.
     pub async fn fetch_pdf(&self, out_path: &str) -> Result<()> {
-        let mut response = surf::get(&self.pdf_url).await.map_err(|err| anyhow!(err))?;
-        let body = response.body_bytes().await.map_err(|err| anyhow!(err))?;
+        let body = reqwest::get(&self.pdf_url).await?.bytes().await?;
         let out_path = if out_path.ends_with(".pdf") {
             out_path.to_string()
         } else {

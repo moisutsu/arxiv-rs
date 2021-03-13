@@ -1,6 +1,6 @@
 use crate::{Arxiv, ArxivQuery};
 
-use anyhow::{anyhow, Result};
+use anyhow::Result;
 use xml::reader::{EventReader, XmlEvent};
 
 /// Fetch the paper information using the arXiv API.
@@ -13,10 +13,7 @@ use xml::reader::{EventReader, XmlEvent};
 /// let arxivs = fetch_arxivs(query).await?;
 /// ```
 pub async fn fetch_arxivs(query: ArxivQuery) -> Result<Vec<Arxiv>> {
-    let mut response = surf::get(query.to_url())
-        .await
-        .map_err(|err| anyhow!(err))?;
-    let body = response.body_string().await.map_err(|err| anyhow!(err))?;
+    let body = reqwest::get(query.to_url()).await?.text().await?;
     let arxivs = parse_data(body)?;
     Ok(arxivs)
 }

@@ -1,7 +1,7 @@
 use anyhow::Result;
 use arxiv::ArxivQueryBuilder;
 
-#[async_std::main]
+#[tokio::main]
 async fn main() -> Result<()> {
     let query = ArxivQueryBuilder::new()
         .search_query("cat:cs.CL")
