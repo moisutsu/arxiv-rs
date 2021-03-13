@@ -12,8 +12,8 @@ Add dependencies to `Cargo.toml`
 
 ```toml
 [dependencies]
-arxiv-rs = "0.1.2"
-async-std = { version = "1.6.0", features = ["attributes"] }
+arxiv-rs = "0.1.3"
+tokio = { version = "1.3.0", features = ["full"]}
 anyhow = "1.0.32"
 ```
 
@@ -23,7 +23,7 @@ Fetch the paper information and save it as a pdf
 use anyhow::Result;
 use arxiv::ArxivQueryBuilder;
 
-#[async_std::main]
+#[tokio::main]
 async fn main() -> Result<()> {
     let query = ArxivQueryBuilder::new()
         .search_query("cat:cs.CL")
@@ -58,5 +58,6 @@ let query = query!(
 
 Give a ⭐️ if this project helped you!
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
