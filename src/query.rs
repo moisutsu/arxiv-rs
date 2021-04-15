@@ -67,10 +67,10 @@ impl ArxivQuery {
     /// Generate a URL string.
     pub fn to_url(&self) -> String {
         let mut querys = Vec::new();
-        if &self.search_query != "" {
+        if !self.search_query.is_empty() {
             querys.push(format!("search_query={}", self.search_query));
         }
-        if &self.id_list != "" {
+        if !self.id_list.is_empty() {
             querys.push(format!("id_list={}", self.id_list));
         }
         if let Some(start) = self.start {
@@ -79,10 +79,10 @@ impl ArxivQuery {
         if let Some(max_results) = self.max_results {
             querys.push(format!("max_results={}", max_results));
         }
-        if &self.sort_by != "" {
+        if !self.sort_by.is_empty() {
             querys.push(format!("sortBy={}", self.sort_by));
         }
-        if &self.sort_order != "" {
+        if !self.sort_order.is_empty() {
             querys.push(format!("sortOrder={}", self.sort_order));
         }
         format!("{}{}", self.base_url, querys.join("&"))
