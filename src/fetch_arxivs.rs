@@ -33,39 +33,29 @@ fn parse_data(body: String) -> Result<Vec<Arxiv>> {
                     arxiv = Arxiv::new();
                 }
                 "id" => {
-                    arxiv.id = if let XmlEvent::Characters(id) = parser.next()? {
-                        id
-                    } else {
-                        arxiv.id
-                    };
+                    if let XmlEvent::Characters(id) = parser.next()? {
+                        arxiv.id = id;
+                    }
                 }
                 "updated" => {
-                    arxiv.updated = if let XmlEvent::Characters(updated) = parser.next()? {
-                        updated
-                    } else {
-                        arxiv.updated
-                    };
+                    if let XmlEvent::Characters(updated) = parser.next()? {
+                        arxiv.updated = updated
+                    }
                 }
                 "published" => {
-                    arxiv.published = if let XmlEvent::Characters(published) = parser.next()? {
-                        published
-                    } else {
-                        arxiv.published
-                    };
+                    if let XmlEvent::Characters(published) = parser.next()? {
+                        arxiv.published = published
+                    }
                 }
                 "title" => {
-                    arxiv.title = if let XmlEvent::Characters(title) = parser.next()? {
-                        title
-                    } else {
-                        arxiv.title
-                    };
+                    if let XmlEvent::Characters(title) = parser.next()? {
+                        arxiv.title = title
+                    }
                 }
                 "summary" => {
-                    arxiv.summary = if let XmlEvent::Characters(summary) = parser.next()? {
-                        summary
-                    } else {
-                        arxiv.summary
-                    };
+                    if let XmlEvent::Characters(summary) = parser.next()? {
+                        arxiv.summary = summary
+                    }
                 }
                 "author" => {
                     parser.next()?;
