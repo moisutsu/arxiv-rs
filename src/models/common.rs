@@ -1,5 +1,5 @@
 /// A structure that stores the paper information.
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq, Default)]
 pub struct Arxiv {
     pub id: String,
     pub updated: String,
@@ -24,7 +24,7 @@ pub struct ArxivQuery {
 }
 
 /// A builder of ArxivQuery
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq, Default)]
 pub struct ArxivQueryBuilder {
     pub base_url: String,
     pub search_query: String,

@@ -7,16 +7,7 @@ use std::io::Write;
 
 impl Arxiv {
     pub fn new() -> Self {
-        Arxiv {
-            id: "".to_string(),
-            updated: "".to_string(),
-            published: "".to_string(),
-            title: "".to_string(),
-            summary: "".to_string(),
-            authors: Vec::new(),
-            pdf_url: "".to_string(),
-            comment: None,
-        }
+        Arxiv::default()
     }
 
     /// Save the paper as a pdf from the information stored by the structure.
