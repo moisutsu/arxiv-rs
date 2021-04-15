@@ -4,12 +4,7 @@ impl ArxivQueryBuilder {
     pub fn new() -> Self {
         ArxivQueryBuilder {
             base_url: "http://export.arxiv.org/api/query?".to_string(),
-            search_query: "".to_string(),
-            id_list: "".to_string(),
-            start: None,
-            max_results: None,
-            sort_by: "".to_string(),
-            sort_order: "".to_string(),
+            ..ArxivQueryBuilder::default()
         }
     }
     /// Build ArxivQuery from ArxivQueryBuilder.
