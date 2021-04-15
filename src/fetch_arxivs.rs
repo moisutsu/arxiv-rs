@@ -14,6 +14,7 @@ use xml::reader::{EventReader, XmlEvent};
 /// ```
 pub async fn fetch_arxivs(query: ArxivQuery) -> Result<Vec<Arxiv>> {
     let body = reqwest::get(query.to_url()).await?.text().await?;
+    println!("{}", body);
     let arxivs = parse_data(body)?;
     Ok(arxivs)
 }
@@ -79,6 +80,11 @@ fn parse_data(body: String) -> Result<Vec<Arxiv>> {
                             "{}.pdf",
                             attributes[1].value.replacen("http", "https", 1).clone()
                         );
+                    }
+                }
+                "comment" => {
+                    if let XmlEvent::Characters(comment) = parser.next()? {
+                        arxiv.comment = Some(comment);
                     }
                 }
                 _ => (),

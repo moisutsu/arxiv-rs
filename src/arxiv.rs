@@ -15,6 +15,7 @@ impl Arxiv {
             summary: "".to_string(),
             authors: Vec::new(),
             pdf_url: "".to_string(),
+            comment: None,
         }
     }
 

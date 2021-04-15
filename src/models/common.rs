@@ -8,6 +8,7 @@ pub struct Arxiv {
     pub summary: String,
     pub authors: Vec<String>,
     pub pdf_url: String,
+    pub comment: Option<String>,
 }
 
 /// A structure that stores the query information.
