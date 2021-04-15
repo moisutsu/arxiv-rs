@@ -12,7 +12,7 @@ Add dependencies to `Cargo.toml`
 
 ```toml
 [dependencies]
-arxiv-rs = "0.1.4"
+arxiv-rs = "0.1.5"
 tokio = { version = "1.3.0", features = ["full"]}
 anyhow = "1.0.32"
 ```
