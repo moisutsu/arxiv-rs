@@ -2,7 +2,7 @@
 name = "arxiv-rs"
 version = "0.1.5"
 authors = ["moisutsu <moisutsu@gmail.com>"]
-edition = "2018"
+edition = "2021"
 description = "A wrapper of the arXiv API for Rust"
 repository = "https://github.com/moisutsu/arxiv-rs"
 license = "MIT"
