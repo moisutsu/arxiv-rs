@@ -7,7 +7,10 @@ pub struct Arxiv {
     pub title: String,
     pub summary: String,
     pub authors: Vec<String>,
+    pub primary_category: String,
+    pub categories: Vec<String>,
     pub pdf_url: String,
+    pub html_url: String,
     pub comment: Option<String>,
 }
 

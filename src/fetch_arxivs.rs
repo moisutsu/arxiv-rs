@@ -63,12 +63,47 @@ fn parse_data(body: String) -> Result<Vec<Arxiv>> {
                         arxiv.authors.push(author);
                     }
                 }
+                "primary_category" => {
+                    if let Some(attribute) = attributes
+                        .iter()
+                        .find(|attr| attr.name.local_name == "term")
+                    {
+                        arxiv.primary_category = attribute.value.clone();
+                    }
+                }
+                "category" => {
+                    if let Some(attribute) = attributes
+                        .iter()
+                        .find(|attr| attr.name.local_name == "term")
+                    {
+                        arxiv.categories.push(attribute.value.clone());
+                    }
+                }
                 "link" => {
-                    if attributes[0].value == "pdf" {
-                        arxiv.pdf_url = format!(
-                            "{}.pdf",
-                            attributes[1].value.replacen("http", "https", 1).clone()
-                        );
+                    if attributes
+                        .iter()
+                        .any(|attr| attr.name.local_name == "title" && attr.value == "pdf")
+                    {
+                        if let Some(attribute) = attributes
+                            .iter()
+                            .find(|attr| attr.name.local_name == "href")
+                        {
+                            arxiv.pdf_url = format!(
+                                "{}.pdf",
+                                attribute.value.replacen("http", "https", 1).clone()
+                            );
+                        }
+                    }
+                    if attributes
+                        .iter()
+                        .any(|attr| attr.name.local_name == "type" && attr.value == "text/html")
+                    {
+                        if let Some(attribute) = attributes
+                            .iter()
+                            .find(|attr| attr.name.local_name == "href")
+                        {
+                            arxiv.html_url = attribute.value.replacen("http", "https", 1).clone();
+                        }
                     }
                 }
                 "comment" => {
