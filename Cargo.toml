@@ -1,6 +1,6 @@
 [package]
 name = "arxiv-rs"
-version = "0.1.5"
+version = "0.2.0"
 authors = ["moisutsu <moisutsu@gmail.com>"]
 edition = "2021"
 description = "A wrapper of the arXiv API for Rust"
